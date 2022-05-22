@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {  useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../Components/Loading';
@@ -16,11 +16,11 @@ const SignIn = () => {
         signInUser,
         signInLoading,
         signInError,
-      ] = useSignInWithEmailAndPassword(auth);
+    ] = useSignInWithEmailAndPassword(auth);
 
 
 
-    const { register, handleSubmit,  formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data);
         signInWithEmailAndPassword(data?.email, data?.password)
@@ -32,22 +32,22 @@ const SignIn = () => {
         errorMessage = <p>Error: {error.message}</p>
     }
 
-   
-    useEffect(() =>{
-        if(user || signInUser){
+
+    useEffect(() => {
+        if (user || signInUser) {
             navigate(from, { replace: true });
-          }
-    },[user,signInUser])
+        }
+    }, [user, signInUser])
 
     return (
-        <div>
-            <h1>Sign In</h1>
+        <div className="flex items-center flex-col">
 
 
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="flex items-center flex-col lg:w-1/3">
                 {/* register your input into the hook by invoking the "register" function */}
-              
+
 
                 {/* include validation with required or other standard HTML validation rules */}
                 {/* <label htmlFor="">Email</label> */}
@@ -57,7 +57,7 @@ const SignIn = () => {
                         value: true,
                         message: 'required is ture'
                     },
-                })} />
+                })} className="input my-custom-style bg-main w-full py-8 text-xl fill:bg-main placeholder:text-black placeholder:text-xl" placeholder='Enter Your Email' />
                 <br />
                 {/* errors will return when field validation fails  */}
                 {errors.email?.message}
@@ -77,13 +77,15 @@ const SignIn = () => {
                     //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
                     //     message: "The string must contain at least 1 Uppercase,lowercase,special character,numeric  alphabetical character,must be eight characters or longer"
                     // }
-                })} />
+                })} className="input my-custom-style bg-main w-full py-8 text-xl placeholder:text-black placeholder:text-xl" placeholder='Password' />
 
-                
+                <Link to='/signup' className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800'>Toggle</Link>
+
                 {errors.password?.message}
-                <input type="submit" />
+                <input type="submit" value="Sign In"
+                    className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800' />
+
             </form>
-            <Link to='/signup'>Toggle</Link>
 
 
 
@@ -95,7 +97,8 @@ const SignIn = () => {
 
 
 
-            <button onClick={() => signInWithGoogle()}>Sign In With Google</button>
+
+            <button onClick={() => signInWithGoogle()} className='btn bg-main my-custom-style mt-10 px-20 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800'>Sign In With Google</button>
             {errorMessage}
         </div>
     );

@@ -31,14 +31,13 @@ const SignUp = () => {
 
 
     return (
-        <div>
-            <h1>Sign Up</h1>
+        <div className="flex items-center flex-col">
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="flex items-center flex-col  lg:w-1/3">
                 {/* register your input into the hook by invoking the "register" function */}
                 {/* <label htmlFor="">Name</label> */}
                 <br />
-                <input defaultValue="test" {...register("name")} />
+                <input {...register("name")}  className="input my-custom-style bg-main w-full  py-8 text-xl placeholder:text-black placeholder:text-xl" placeholder='Enter Your UserName'/>
                 <br />
 
                 {/* include validation with required or other standard HTML validation rules */}
@@ -49,7 +48,7 @@ const SignUp = () => {
                         value: true,
                         message: 'required is ture'
                     },
-                })} />
+                })}   className="input my-custom-style bg-main w-full py-8 text-xl fill:bg-main placeholder:text-black placeholder:text-xl" placeholder='Enter Your Email'/>
                 <br />
                 {/* errors will return when field validation fails  */}
                 {errors.email?.message}
@@ -69,11 +68,14 @@ const SignUp = () => {
                     //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
                     //     message: "The string must contain at least 1 Uppercase,lowercase,special character,numeric  alphabetical character,must be eight characters or longer"
                     // }
-                })} />
+                })}   className="input my-custom-style bg-main w-full py-8 text-xl fill:bg-main placeholder:text-black placeholder:text-xl" placeholder='Password'/>
                 {errors.password?.message}
-                <input type="submit" />
+                <Link to='/signin'
+                className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800'>Toggle</Link>
+                <input type="submit" value="Sign Up" 
+                className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800'/>
             </form>
-            <Link to='/signin'>Toggle</Link>
+            
         </div>
     );
 };
