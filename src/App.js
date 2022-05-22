@@ -27,7 +27,11 @@ function App() {
               <About></About>
             </RequireAuth>
           }></Route>
-          <Route path='/singleTool/:_id' element={<Manufacturer_Tool></Manufacturer_Tool>}></Route>
+          <Route path='/singleTool/:_id' element={
+            <RequireAuth>
+              <Manufacturer_Tool></Manufacturer_Tool>
+            </RequireAuth>
+          }></Route>
           <Route path='/contact' element={<Contact></Contact>}></Route>
           <Route path='/signIn' element={<SignIn></SignIn>}></Route>
           <Route path='/signUp' element={<SignUp></SignUp>}></Route>

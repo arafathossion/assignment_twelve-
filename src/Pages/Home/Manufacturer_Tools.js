@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
 const Manufacturer_Tools = () => {
     const navigate = useNavigate();
-    const [tools, setTools] = useState();
-    useEffect(() => {
-        fetch('data.json')
-            .then(res => res.json())
-            .then(data => setTools(data))
-    }, [])
+    // const [tools, setTools] = useState();
+    // useEffect(() => {
+    //     fetch('data.json')
+    //         .then(res => res.json())
+    //         .then(data => setTools(data))
+    // }, [])
 
-    const handleClick = (itemName) => {
-             navigate(`/singleTool/${itemName}`);
-        console.log(itemName)
+    const { isLoading, error, data:tools } = useQuery('repoData', () =>
+    fetch('http://localhost:5000/tools').then(res =>
+      res.json()
+    )
+    )
+    console.log(tools)
+
+    const handleClick = (_id) => {
+             navigate(`/singleTool/${_id}`);
+        console.log(_id)
     }
     return (
         <div className=' py-24'>
@@ -32,7 +40,7 @@ const Manufacturer_Tools = () => {
                             </div>
                             <p className='text-center'>{tool.about.length > 80 ? tool.about.slice(0, 80) : tool.about}</p>
                             <div class="card-actions justify-center">
-                                <button class="btn btn-primary my-custom-style my-3" onClick={() => handleClick(tool.itemName)}>place order</button>
+                                <button class="btn btn-primary my-custom-style my-3" onClick={() => handleClick(tool._id)}>place order</button>
                             </div>
                         </div>
                     </div>)
