@@ -12,7 +12,10 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 
+
 export default function Banner() {
+
+
   return (
     <>
       <Swiper
@@ -29,6 +32,11 @@ export default function Banner() {
         modules={[Autoplay, Pagination, Navigation]}
         className="swiper h-screen bg-red-800"
       >
+
+
+
+
+
         <SwiperSlide className="swiper-banner-slide">
             <img src="https://images.unsplash.com/photo-1426927308491-6380b6a9936f?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2NyZXdkcml2ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=600" alt="" />
         </SwiperSlide>

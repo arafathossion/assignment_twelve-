@@ -3,48 +3,48 @@
     "itemName": "Slotted Head Screwdriver",
     "picture": "https://www.mechanicalbooster.com/wp-content/uploads/2018/05/Flat-Head-Screwdriver.jpg?ezimgfmt=ng:webp/ngcb20",
     "about": "It is one of the oldest types of screwdriver. It was invented in the 15th century in Europe and one of the most common types of screwdrivers.As the name suggest it has a flat shape shaft tip with a single slot which engages with the slotted screw head only. ",
-    "minOrderQuantity": "1,123",
-    "quantity": "22,279",
-    "balance": "$12.44"
+    "minOrderQuantity": "1123",
+    "quantity": "22279",
+    "balance": "12.44"
   },
   {
     "itemName": "Phillips Screwdriver",
     "picture": "https://www.mechanicalbooster.com/wp-content/uploads/2018/05/Philips-Head-Screwdriver.jpg?ezimgfmt=ng:webp/ngcb20",
     "about": "As today’s world is moving from a manual driven to power or motor driven, these were the first step towards power driven screwdrivers to save time and do things more precisely and accurately. These were invented in 19th century by Henry Phillips with an aim to introduce the power driven screwdrivers in most of the industries.",
-    "minOrderQuantity": "1,809",
-    "quantity": "10,294",
-    "balance": "$35.77"
+    "minOrderQuantity": "1809",
+    "quantity": "10294",
+    "balance": "35.77"
   },
   {
     "itemName": "Pozidriv Screwdriver",
     "picture": "https://www.mechanicalbooster.com/wp-content/uploads/2018/05/Pozidriv-Screwdriver.jpg?ezimgfmt=ng:webp/ngcb20",
     "about": "The pozidriv screwdriver, unlike Phillips screwdriver, has two cross sign which are offset at 45 degree angles. These are designed and widely used in Europe. This shape doesn’t completely overcome the cam-out effect but provide better resistance to slipping and offer more stability than Phillip profile",
-    "minOrderQuantity": "1,648",
-    "quantity": "21,390",
-    "balance": "$19.28"
+    "minOrderQuantity": "1648",
+    "quantity": "21390",
+    "balance": "19.28"
   },
   {
     "itemName": "Square Screwdriver",
     "picture": "https://www.mechanicalbooster.com/wp-content/uploads/2018/05/square-screwdriver-set-300x192.jpg?ezimgfmt=ng:webp/ngcb20",
     "about": "The square screwdriver also known as Robertson screwdriver, named after a Canadian inventor.The engagement of quite tapered square shape opening screw with the square protrusion, with no angle involved, neglects the cam-out effect, thus improve centering. Slight Taper shape at the front of the tool provides a good locking with the screw and thus makes it more comfortable for use. ",
-    "minOrderQuantity": "1,556",
-    "quantity": "18,378",
-    "balance": "$65.57"
+    "minOrderQuantity": "1556",
+    "quantity": "18378",
+    "balance": "65.57"
   },
   {
     "itemName": "Torx Screwdriver",
     "picture": "https://www.mechanicalbooster.com/wp-content/uploads/2018/05/Torx-Screwdriver.jpg?ezimgfmt=ng:webp/ngcb20",
     "about": "Torx screwdriver is becoming very common and often used by automotive technicians. Many times they are called as star tips by technician. This driver has a star shape tip with 6 rounded lobes. Because of the circular geometry of the lobes there is low radial force in a torx screwdriver",
-    "minOrderQuantity": "1,963",
-    "quantity": "22,252",
-    "balance": "$18.72"
+    "minOrderQuantity": "1963",
+    "quantity": "22252",
+    "balance": "18.72"
   },
   {
     "itemName": "Hexagon Screwdriver",
     "picture": "https://www.mechanicalbooster.com/wp-content/uploads/2018/05/Hex-Screwdriver-300x300.jpg?ezimgfmt=ng:webp/ngcb20",
     "about": "It has six straight lobes, like hexagon. These are used to fasten often bolts rather than screws. You must have seen these bits in your ratchet box for tightening up or loosing hex bolts, nuts and screws. No slipping or cam- out effect takes place while driving this hence most of the power driver tools can be fitted with hex arrangement bits and thus makes the production fast and with less error",
-    "minOrderQuantity": "1,216",
-    "quantity": "17,167",
-    "balance": "$40.25"
+    "minOrderQuantity": "1216",
+    "quantity": "17167",
+    "balance": "40.25"
   }
 ]

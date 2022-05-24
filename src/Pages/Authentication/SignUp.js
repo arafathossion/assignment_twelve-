@@ -3,31 +3,37 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../fierbase.init';
+import UserToken from '../../Hooks/UseToken';
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
 const SignUp = () => {
     const navigate = useNavigate();
-    
+    const [updateProfile, updating] = useUpdateProfile(auth);
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
-    
-    const { register, handleSubmit,  formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data);
-        createUserWithEmailAndPassword(data?.email, data?.password)
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = async data => {
+       await createUserWithEmailAndPassword(data?.email, data?.password);
+        await updateProfile({ displayName: data?.displayName});
     };
-
-
-    useEffect(() =>{
-        if(user){
-            navigate('/')
-          }
-    },[user])
-
     
+    // console.log(user?.user?.email,user?.user?.displayName);
+
+    const [token] = UserToken(user)
+
+
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [user])
+
+
 
 
     return (
@@ -37,7 +43,7 @@ const SignUp = () => {
                 {/* register your input into the hook by invoking the "register" function */}
                 {/* <label htmlFor="">Name</label> */}
                 <br />
-                <input {...register("name")}  className="input my-custom-style bg-main w-full  py-8 text-xl placeholder:text-black placeholder:text-xl" placeholder='Enter Your UserName'/>
+                <input {...register("displayName")} className="input my-custom-style bg-main w-full  py-8 text-xl placeholder:text-black placeholder:text-xl" placeholder='Enter Your UserName' />
                 <br />
 
                 {/* include validation with required or other standard HTML validation rules */}
@@ -48,7 +54,7 @@ const SignUp = () => {
                         value: true,
                         message: 'required is ture'
                     },
-                })}   className="input my-custom-style bg-main w-full py-8 text-xl fill:bg-main placeholder:text-black placeholder:text-xl" placeholder='Enter Your Email'/>
+                })} className="input my-custom-style bg-main w-full py-8 text-xl fill:bg-main placeholder:text-black placeholder:text-xl" placeholder='Enter Your Email' />
                 <br />
                 {/* errors will return when field validation fails  */}
                 {errors.email?.message}
@@ -68,14 +74,14 @@ const SignUp = () => {
                     //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
                     //     message: "The string must contain at least 1 Uppercase,lowercase,special character,numeric  alphabetical character,must be eight characters or longer"
                     // }
-                })}   className="input my-custom-style bg-main w-full py-8 text-xl fill:bg-main placeholder:text-black placeholder:text-xl" placeholder='Password'/>
+                })} className="input my-custom-style bg-main w-full py-8 text-xl fill:bg-main placeholder:text-black placeholder:text-xl" placeholder='Password' />
                 {errors.password?.message}
                 <Link to='/signin'
-                className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800'>Toggle</Link>
-                <input type="submit" value="Sign Up" 
-                className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800'/>
+                    className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800'>Toggle</Link>
+                <input type="submit" value="Sign Up"
+                    className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800' />
             </form>
-            
+
         </div>
     );
 };

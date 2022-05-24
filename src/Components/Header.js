@@ -6,7 +6,7 @@ import auth from '../fierbase.init';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
-
+    // console.log(user);
     return (
         <div>
             <div class="drawer drawer-end">
@@ -30,11 +30,19 @@ const Header = () => {
                                 <li> <NavLink to="/about">About</NavLink></li>
                                 <li>  <NavLink to="/contact">Contact</NavLink></li>
                                 <li>   {
-                                    user ? <button onClick={() => {
-                                        signOut(auth);
-                                    }}>Log out</button> : <>
+                                    user ? <>
+                                        <NavLink to="/dashboard">DashBoard</NavLink>
+                                        <button onClick={() => {
+                                            signOut(auth);
+                                        }}>Log out</button>
+                                        <p>{user?.displayName}</p>                                        
+                                    </> : <>
+
                                         <NavLink to="/signIn">Sign In</NavLink>
-                                        <NavLink to="/signUp">Sign Up</NavLink></>
+                                        <NavLink to="/signUp">Sign Up</NavLink>
+
+                                    </>
+
                                 }</li>
                             </ul>
                         </div>
@@ -47,11 +55,16 @@ const Header = () => {
                     <ul class="menu p-4 overflow-y-auto w-80 bg-main">
                         <li><NavLink to="/home">Home</NavLink></li>
                         <li> <NavLink to="/about">About</NavLink></li>
+
                         <li>  <NavLink to="/contact">Contact</NavLink></li>
                         <li>   {
-                            user ? <button onClick={() => {
-                                signOut(auth);
-                            }}>Log out</button> : <>
+                            user ? <>
+                                <NavLink to="/dashboard">DashBoard</NavLink>
+                                <button onClick={() => {
+                                    signOut(auth);
+                                }}>Log out</button>
+                            </> : <>
+
                                 <NavLink to="/signIn">Sign In</NavLink>
                                 <NavLink to="/signUp">Sign Up</NavLink></>
                         }</li>

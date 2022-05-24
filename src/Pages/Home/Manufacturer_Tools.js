@@ -16,7 +16,7 @@ const Manufacturer_Tools = () => {
       res.json()
     )
     )
-    console.log(tools)
+    // console.log(tools)
 
     const handleClick = (_id) => {
              navigate(`/singleTool/${_id}`);
