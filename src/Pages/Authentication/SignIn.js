@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../Components/Loading';
 import auth from '../../fierbase.init'
+import UseToken from '../../Hooks/UseToken';
 
 const SignIn = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -26,6 +27,8 @@ const SignIn = () => {
         signInWithEmailAndPassword(data?.email, data?.password)
     };
 
+    const [token] = UseToken(user || signInUser);
+
     let errorMessage;
     if (error || signInError) {
 
@@ -33,11 +36,12 @@ const SignIn = () => {
     }
 
 
+
     useEffect(() => {
-        if (user || signInUser) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, signInUser])
+    }, [token,from,navigate])
 
     return (
         <div className="flex items-center flex-col">

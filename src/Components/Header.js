@@ -34,6 +34,7 @@ const Header = () => {
                                         <NavLink to="/dashboard">DashBoard</NavLink>
                                         <button onClick={() => {
                                             signOut(auth);
+                                            localStorage.removeItem('accessToken')
                                         }}>Log out</button>
                                         <p>{user?.displayName}</p>                                        
                                     </> : <>
@@ -62,6 +63,7 @@ const Header = () => {
                                 <NavLink to="/dashboard">DashBoard</NavLink>
                                 <button onClick={() => {
                                     signOut(auth);
+                                    localStorage.removeItem('accessToken')
                                 }}>Log out</button>
                             </> : <>
 

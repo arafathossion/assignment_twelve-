@@ -1,19 +1,37 @@
+import { signOut } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../fierbase.init';
+import Loading from '../../Components/Loading'
 
 const MyOrder = () => {
     const [user] = useAuthState(auth);
     const url = `http://localhost:5000/myorder?email=${user?.email}`
-    const { isLoading, error, data: myOrders,refetch } = useQuery('myOrder', () =>
-        fetch(url).then(res =>
-            res.json()
-        )
+    const { isLoading, error, data: myOrders, refetch } = useQuery('myOrder', () =>
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => {
+            if (res.status === 401 || res.status === 403) {
+                signOut(auth);
+                localStorage.removeItem('accessToken')
+            }
+            return res.json()
+        })
+
     )
+    // {
+    //      if (res.status === 401 || res.status === 403) {
+    //         signOut(auth);
+    //        localStorage.removeItem('accessToken')
+    //     }
+    // }
     const handleMyOrderDelete = _id => {
         const urls = `http://localhost:5000/order/${_id}`
-        fetch( urls, {
+        fetch(urls, {
             method: 'DELETE', // or 'PUT'          
         })
             .then(response => response.json())
@@ -23,10 +41,10 @@ const MyOrder = () => {
             .catch((error) => {
                 console.error('Error:', error);
             });
-            refetch()
+        refetch()
     }
 
-   
+
 
 
 

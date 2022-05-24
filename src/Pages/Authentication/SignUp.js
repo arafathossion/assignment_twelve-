@@ -28,7 +28,7 @@ const SignUp = () => {
 
 
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate('/')
         }
     }, [user])
