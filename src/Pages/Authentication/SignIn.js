@@ -32,7 +32,7 @@ const SignIn = () => {
     let errorMessage;
     if (error || signInError) {
 
-        errorMessage = <p>Error: {error.message}</p>
+        errorMessage = <p>Error: {error?.message} {signInError?.message}</p>
     }
 
 
@@ -41,7 +41,7 @@ const SignIn = () => {
         if (token) {
             navigate(from, { replace: true });
         }
-    }, [token,from,navigate])
+    }, [token, from, navigate])
 
     return (
         <div className="flex items-center flex-col">
@@ -82,7 +82,7 @@ const SignIn = () => {
                     //     message: "The string must contain at least 1 Uppercase,lowercase,special character,numeric  alphabetical character,must be eight characters or longer"
                     // }
                 })} className="input my-custom-style bg-main w-full py-8 text-xl placeholder:text-black placeholder:text-xl" placeholder='Password' />
-
+               <p> {errorMessage}</p>
                 <Link to='/signup' className='btn bg-main my-custom-style mt-10 px-36 h-14 rounded-full border-0 text-black text-lg hover:bg-main hover:text-red-800'>Toggle</Link>
 
                 {errors.password?.message}

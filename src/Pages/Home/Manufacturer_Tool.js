@@ -10,6 +10,7 @@ import auth from '../../fierbase.init';
 
 
 const Manufacturer_Tool = () => {
+    const Swal = require('sweetalert2')
     const [getValue, setGetValue] = useState();
     const [user] = useAuthState(auth);
     const { _id } = useParams();
@@ -50,23 +51,23 @@ const Manufacturer_Tool = () => {
             )
             e.target.reset();
         }
-        const order = { name, email, quantity, price, img}
+        const order = { name, email, quantity, price, img }
 
-        
-    fetch('http://localhost:5000/order', {
-        method: 'POST', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(order),
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
+
+        fetch('http://localhost:5000/order', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(order),
         })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
 
         // console.log(order)
     }
@@ -75,7 +76,7 @@ const Manufacturer_Tool = () => {
 
 
 
-    const Swal = require('sweetalert2')
+    
     const handleBlur = (e) => {
         const orderQuantity = e.target.value;
         const mQuantity = parseInt(tool?.minOrderQuantity);
@@ -179,7 +180,7 @@ const Manufacturer_Tool = () => {
 
 
 
-                <label for="quantity" className={`${(mQuantity < parseInt(getValue) < maxQuantity) ? 'text-red-500' : 'hidden'}`} readOnly>Order between {tool?.minOrderQuantity} and {tool?.quantity}</label>
+                <label htmlFor="quantity" className={`${(mQuantity < parseInt(getValue) < maxQuantity) ? 'text-red-500' : 'hidden'}`} readOnly>Order between {tool?.minOrderQuantity} and {tool?.quantity}</label>
                 <input type="number"
                     id="quantity"
                     name="quantity"

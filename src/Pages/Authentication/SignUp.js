@@ -6,7 +6,9 @@ import auth from '../../fierbase.init';
 import UserToken from '../../Hooks/UseToken';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
+
 const SignUp = () => {
+
     const navigate = useNavigate();
     const [updateProfile, updating] = useUpdateProfile(auth);
     const [
@@ -23,15 +25,16 @@ const SignUp = () => {
     };
     
     // console.log(user?.user?.email,user?.user?.displayName);
-
+    
     const [token] = UserToken(user)
-
-
+    
+    
     useEffect(() => {
         if (token) {
-            navigate('/')
+            navigate('/home')
+            
         }
-    }, [user])
+    }, [token])
 
 
 

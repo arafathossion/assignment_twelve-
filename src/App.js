@@ -13,8 +13,23 @@ import DashBoard from './Pages/DashBoard/DashBoard';
 import MyOrder from './Pages/DashBoard/MyOrder';
 import MyReview from './Pages/DashBoard/MyReviews';
 import MyProfile from './Pages/DashBoard/MyProfile';
+import AllUsers from './Pages/DashBoard/AllUsers';
+import AllOrders from './Pages/DashBoard/AllOrders';
+import { useQuery } from 'react-query';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from './fierbase.init';
+import RequireAdmin from './Pages/Authentication/RequireAdmin';
+import RequireNotAdmin from './Pages/Authentication/RequireNotAdmin';
+import AddProduct from './Pages/DashBoard/AddProduct';
+
+
 
 function App() {
+  const [user] = useAuthState(auth)
+  const { refetch } = useQuery();
+  // if (user) {
+  //   refetch()
+  // }
   return (
     <div>
 
@@ -32,9 +47,7 @@ function App() {
             </RequireAuth>
           }></Route>
           <Route path='/singleTool/:_id' element={
-            <RequireAuth>
-              <Manufacturer_Tool></Manufacturer_Tool>
-            </RequireAuth>
+            <Manufacturer_Tool></Manufacturer_Tool>
           }></Route>
           <Route path='/contact' element={<Contact></Contact>}></Route>
           <Route path='/signIn' element={<SignIn></SignIn>}></Route>
@@ -47,8 +60,34 @@ function App() {
               <DashBoard></DashBoard>
             </RequireAuth>
           }>
-            <Route path='/dashboard/myorder' element={<MyOrder></MyOrder>}></Route>
-            <Route path='/dashboard/myreview' element={<MyReview></MyReview>}></Route>
+            <Route path='/dashboard/myorder' element={
+              <RequireNotAdmin>
+                <MyOrder></MyOrder>
+              </RequireNotAdmin>
+            }></Route>
+            <Route path='/dashboard/myreview' element={
+              <RequireNotAdmin>
+                <MyReview></MyReview>
+              </RequireNotAdmin>
+            }></Route>
+            <Route path='/dashboard/allusers' element={
+              <RequireAdmin>
+
+                <AllUsers></AllUsers>
+              </RequireAdmin>
+
+            }></Route>
+            <Route path='/dashboard/allorder' element={
+              <RequireAdmin>
+                <AllOrders></AllOrders>
+              </RequireAdmin>
+            }></Route>
+
+            <Route path='/dashboard/addproduct' element={
+              <RequireAdmin>
+                <AddProduct></AddProduct>
+              </RequireAdmin>
+            }></Route>
             <Route index element={<MyProfile></MyProfile>}></Route>
 
 

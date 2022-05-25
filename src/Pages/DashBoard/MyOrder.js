@@ -2,10 +2,11 @@ import { signOut } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../fierbase.init';
-import Loading from '../../Components/Loading'
 
 const MyOrder = () => {
+    const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const url = `http://localhost:5000/myorder?email=${user?.email}`
     const { isLoading, error, data: myOrders, refetch } = useQuery('myOrder', () =>
@@ -17,7 +18,8 @@ const MyOrder = () => {
         }).then(res => {
             if (res.status === 401 || res.status === 403) {
                 signOut(auth);
-                localStorage.removeItem('accessToken')
+                localStorage.removeItem('accessToken');
+                       navigate('/home')
             }
             return res.json()
         })

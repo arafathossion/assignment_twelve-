@@ -45,15 +45,15 @@ const Reviews = () => {
 
 
                     {
-                        reviews?.map(review => <div class="hero bg-main py-0 ">
+                        reviews?.map(review => <div className="hero bg-main py-0 ">
                             <SwiperSlide className="">
-                                <div class="hero-content flex-col lg:flex-row md:p-28">
-                                    <div class="w-2/5 h-96 rounded-lg shadow-2xl bg-red-300 flex before:absolute before:-inset-1 before:-skew-y-[5deg] before:bg-sky-100 before:rounded-lg relative z-40">
-                                        <img src={review?.image} class="z-50 w-4/5  h-80 block m-auto rounded-lg shadow-2xl" />
+                                <div className="hero-content flex-col lg:flex-row md:p-28">
+                                    <div className="w-2/5 h-96 rounded-lg shadow-2xl bg-red-300 flex before:absolute before:-inset-1 before:-skew-y-[5deg] before:bg-sky-100 before:rounded-lg relative z-40">
+                                        <img src={review?.image} className="z-50 w-4/5  h-80 block m-auto rounded-lg shadow-2xl" />
                                     </div>
                                     <div className='w-3/5 md:pl-10'>
-                                        <h1 class="text-xl uppercase font-bold">{review?.title}</h1>
-                                        <p class="py-6">{review?.about}</p>
+                                        <h1 className="text-xl uppercase font-bold">{review?.title}</h1>
+                                        <p className="py-6">{review?.about}</p>
                                         <div className='grid md:grid-cols-3 items-center'>
                                             <p className='text-2xl font-semibold text-teal-500'><span className='text-black '>Rating : </span>{review?.rating}</p>
                                             <div className='col-span-2 justify-self-center text-teal-600'>
@@ -76,15 +76,15 @@ const Reviews = () => {
 
                 </Swiper>
 
-                <div class="hero-content flex-col lg:flex-row md:p-28">
-                    <div class="grid grid-cols-1 w-2/5 h-96 rounded-lg shadow-2xl bg-red-300 before:absolute before:-inset-1 before:-skew-y-[5deg] before:bg-sky-100 before:rounded-lg relative z-40">
-                        <img src="https://api.lorem.space/image/movie?w=260&h=400" class="z-50 w-4/5  h-80 block m-auto rounded-lg shadow-2xl" />
-                        <h1 class="text-5xl font-bold">name</h1>
+                <div className="hero-content flex-col lg:flex-row md:p-28">
+                    <div className="grid grid-cols-1 w-2/5 h-96 rounded-lg shadow-2xl bg-red-300 before:absolute before:-inset-1 before:-skew-y-[5deg] before:bg-sky-100 before:rounded-lg relative z-40">
+                        <img src="https://api.lorem.space/image/movie?w=260&h=400" className="z-50 w-4/5  h-80 block m-auto rounded-lg shadow-2xl" />
+                        <h1 className="text-5xl font-bold">name</h1>
                     </div>
                     <div className='w-3/5 md:pl-10'>
-                        <h1 class="text-5xl font-bold"></h1>
-                        <p class="py-6"></p>
-                        <button class="btn bg- text-black border-white">Get Started</button>
+                        <h1 className="text-5xl font-bold"></h1>
+                        <p className="py-6"></p>
+                        <button className="btn bg- text-black border-white">Get Started</button>
                     </div>
                 </div>
             </div>
