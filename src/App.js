@@ -25,6 +25,7 @@ import Payment from './Pages/DashBoard/Payment';
 import SingleBlog from './Pages/Home/SingleBlog'
 import UpdateProfile from './Pages/DashBoard/UpdateProfile';
 import AddProfile from './Pages/DashBoard/AddProfile';
+import NotFound from './Pages/NotFound';
 
 
 
@@ -111,7 +112,7 @@ function App() {
           <Route path='/private' element={<Privite></Privite>}></Route>
 
 
-
+<Route path='*' element={<NotFound></NotFound>}></Route>
         </Route>
       </Routes>
     </div>

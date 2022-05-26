@@ -50,7 +50,7 @@ const Blog = () => {
                 {
                     blogs?.map(blog => <SwiperSlide className='h-auto'>
                         <div class="card card-compact my-custom-style">
-                            <figure><img src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" className='p-4' /></figure>
+                            <figure><img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVhY3R8ZW58MHx8MHx8&auto=format&fit=crop&w=600" alt="Shoes" className='p-4' /></figure>
                             <div class="card-body">
                                 <h2 class="card-title">{blog?.author}</h2>
                                 <h2 class="text-md font-medium">{blog?.question.slice(0, 50)} ....</h2>
@@ -60,7 +60,7 @@ const Blog = () => {
                                    
                                 } */}
                                 <div class="card-actions justify-end">
-                                    <Link to={`/blog/${blog?._id}`} class="btn btn-primary">Buy Now</Link>
+                                    <Link to={`/blog/${blog?._id}`} class="btn bg-main my-custom-style text-teal-500 border-0">Read More!</Link>
                                 </div>
                             </div>
                         </div>
