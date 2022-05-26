@@ -18,7 +18,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 const Reviews = () => {
     const [user] = useAuthState(auth);
     const { isLoading, error, data: reviews } = useQuery('review', () =>
-        fetch('http://localhost:5000/review').then(res =>
+        fetch('https://serene-hamlet-44786.herokuapp.com/review').then(res =>
             res.json()
         )
     )

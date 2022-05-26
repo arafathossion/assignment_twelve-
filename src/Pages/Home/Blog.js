@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 const Blog = () => {
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/blogs')
+        fetch('https://serene-hamlet-44786.herokuapp.com/blogs')
             .then(res => res.json())
             .then(data => setBlogs(data))
     }, []);

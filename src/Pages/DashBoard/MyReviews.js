@@ -7,7 +7,7 @@ const MyReviews = () => {
     const [user] = useAuthState(auth)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = review => {
-        fetch('http://localhost:5000/review', {
+        fetch('https://serene-hamlet-44786.herokuapp.com/review', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

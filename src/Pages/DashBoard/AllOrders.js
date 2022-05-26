@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 
 const AllOrders = () => {
     const Swal = require('sweetalert2')
-    const url = `http://localhost:5000/orders`
+    const url = `https://serene-hamlet-44786.herokuapp.com/orders`
     const { isLoading, error, data: allOrders, refetch } = useQuery('allOrder', () =>
         fetch(url)
             .then(res => res.json())
@@ -21,7 +21,7 @@ const AllOrders = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                const urls = `http://localhost:5000/order/${_id}`
+                const urls = `https://serene-hamlet-44786.herokuapp.com/order/${_id}`
                 fetch(urls, {
                     method: 'DELETE', // or 'PUT'          
                 })
@@ -43,14 +43,14 @@ const AllOrders = () => {
     }
 
 
-    const handleUpdateStatus = _id =>{
-        fetch(`http://localhost:5000/updateStatus/${_id}`, {
-                method: 'PUT',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                },
-            }).then(res=>res.json())
+    const handleUpdateStatus = _id => {
+        fetch(`https://serene-hamlet-44786.herokuapp.com/updateStatus/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+        }).then(res => res.json())
             .then(data => {
                 console.log(data);
             })
@@ -82,11 +82,11 @@ const AllOrders = () => {
                         {
                             allOrder?.paid ? <button className='btn bg-main text-teal-500 border-0 my-custom-style'>Paid</button> : <button className='btn bg-main text-teal-500 border-0 my-custom-style'>UnPaid</button>
                         }
-                   
+
                         {
                             allOrder?.paid ? '' : <button className='btn bg-main text-teal-500 border-0 my-custom-style' onClick={() => handleSingleOrderDelete(allOrder?._id)}>Delete</button>
                         }
-                   
+
                         {/* <label class="swap">
                             <input type="checkbox" />
                             

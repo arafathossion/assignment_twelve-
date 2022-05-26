@@ -26,7 +26,7 @@ const AddProduct = () => {
                         minOrderQuantity: newProduct.minOrderQuantity,
                         picture: image,
                     }
-                    fetch('http://localhost:5000/tools', {
+                    fetch('https://serene-hamlet-44786.herokuapp.com/tools', {
                         method: 'POST', // or 'PUT'
                         headers: {
                             'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const AddProduct = () => {
                     })
                         .then(response => response.json())
                         .then(data => {
-                            if(data?.acknowledged === true){
+                            if (data?.acknowledged === true) {
                                 Swal.fire(
                                     'Good job!',
                                     'You clicked the button!',

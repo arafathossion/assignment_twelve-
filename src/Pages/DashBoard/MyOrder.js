@@ -9,7 +9,7 @@ const MyOrder = () => {
     const Swal = require('sweetalert2')
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
-    const url = `http://localhost:5000/myorder?email=${user?.email}`
+    const url = `https://serene-hamlet-44786.herokuapp.com/myorder?email=${user?.email}`
     const { isLoading, error, data: myOrders, refetch } = useQuery('myOrder', () =>
         fetch(url, {
             method: 'GET',
@@ -43,7 +43,7 @@ const MyOrder = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                const urls = `http://localhost:5000/order/${_id}`
+                const urls = `https://serene-hamlet-44786.herokuapp.com/order/${_id}`
                 fetch(urls, {
                     method: 'DELETE', // or 'PUT'          
                 })
@@ -94,11 +94,11 @@ const MyOrder = () => {
                                     >Pay</button>
                                 </Link>
                         }
-                        
-                       {
-                           myorder?.paid ? '':  <button className='btn bg-main text-red-500 my-custom-style border-0' 
-                           onClick={() => handleMyOrderDelete(myorder?._id)}>Delete</button>
-                       }
+
+                        {
+                            myorder?.paid ? '' : <button className='btn bg-main text-red-500 my-custom-style border-0'
+                                onClick={() => handleMyOrderDelete(myorder?._id)}>Delete</button>
+                        }
                     </div>
                     <div className='text-teal-500 font-semibold col-span-4'>
                         <h4>Transaction Id : {myorder?.transactionId}</h4>

@@ -10,7 +10,7 @@ const UpdateProfile = () => {
     const [user] = useAuthState(auth)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = update => {
-        fetch(`http://localhost:5000/update/${user?.email}`, {
+        fetch(`https://serene-hamlet-44786.herokuapp.com/update/${user?.email}`, {
             method: 'PUT', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const UpdateProfile = () => {
                 console.error('Error:', error);
             });
         console.log(update);
- navigate('/dashboard')
+        navigate('/dashboard')
         reset();
     };
     return (
@@ -50,11 +50,11 @@ const UpdateProfile = () => {
                 <input {...register("email")}
                     className="my-custom-style input bg-main mt-5 text-md text-teal-500 font-semibold capitalize placeholder:text-md placeholder:text-teal-500 placeholder:font-semibold placeholder:capitalize"
                     placeholder='Enter Your Name' value={user?.email} required readOnly
-                />            
+                />
                 <input {...register("number")}
                     className="my-custom-style input bg-main mt-5 text-md text-teal-500 font-semibold capitalize placeholder:text-md placeholder:text-teal-500 placeholder:font-semibold placeholder:capitalize"
-                    placeholder='Enter Your Phone Number'  required
-                />            
+                    placeholder='Enter Your Phone Number' required
+                />
                 <div className='grid md:grid-cols-2 gap-6'>
                     <input {...register("collegeName")}
                         className="my-custom-style input bg-main mt-5 text-md text-teal-500 font-semibold capitalize placeholder:text-md placeholder:text-teal-500 placeholder:font-semibold placeholder:capitalize"

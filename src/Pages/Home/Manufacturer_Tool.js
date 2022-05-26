@@ -14,7 +14,7 @@ const Manufacturer_Tool = () => {
     const [getValue, setGetValue] = useState();
     const [user] = useAuthState(auth);
     const { _id } = useParams();
-    const url = `http://localhost:5000/tools/${_id}`
+    const url = `https://serene-hamlet-44786.herokuapp.com/tools/${_id}`
     const { isLoading, data: tool } = useQuery('singleTool', () =>
         fetch(url).then(res =>
             res.json()
@@ -55,7 +55,7 @@ const Manufacturer_Tool = () => {
         const order = { name, email, quantity, price, img, itemName }
 
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://serene-hamlet-44786.herokuapp.com/order', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const Manufacturer_Tool = () => {
 
 
 
-    
+
     const handleBlur = (e) => {
         const orderQuantity = e.target.value;
         const mQuantity = parseInt(tool?.minOrderQuantity);

@@ -15,7 +15,7 @@ const Manufacturer_Tools = () => {
     // }, [])
 
     const { isLoading, error, data: tools, refetch } = useQuery('repoData', () =>
-        fetch('http://localhost:5000/tools').then(res =>
+        fetch('https://serene-hamlet-44786.herokuapp.com/tools').then(res =>
             res.json()
         )
     )

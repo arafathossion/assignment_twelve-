@@ -19,7 +19,7 @@ const CheckoutForm = ({ singlePayment }) => {
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://serene-hamlet-44786.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -82,24 +82,24 @@ const CheckoutForm = ({ singlePayment }) => {
             setTransactionId(paymentIntent.id);
             console.log(paymentIntent);
             setSuccess('Congrats! Your payment is completed.')
-            
+
             //store payment on database
             const payment = {
                 order: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/myorder/${_id}`, {
+            fetch(`https://serene-hamlet-44786.herokuapp.com/myorder/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(payment)
-            }).then(res=>res.json())
-            .then(data => {
-                setProcessing(false);
-                console.log(data);
-            })
+            }).then(res => res.json())
+                .then(data => {
+                    setProcessing(false);
+                    console.log(data);
+                })
 
         }
     }
@@ -108,7 +108,7 @@ const CheckoutForm = ({ singlePayment }) => {
 
 
 
-    
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -128,7 +128,7 @@ const CheckoutForm = ({ singlePayment }) => {
                         },
                     }}
                 />
-                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret ||success}>
+                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret || success}>
                     Pay
                 </button>
             </form>

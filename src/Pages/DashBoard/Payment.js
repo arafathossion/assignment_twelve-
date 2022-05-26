@@ -12,7 +12,7 @@ const stripePromise = loadStripe('pk_test_51L3Hl5HSv52aBrsGmV4NDLfcPrGlNtLt0Ckds
 const Payment = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const url = `http://localhost:5000/payment/${id}`
+    const url = `https://serene-hamlet-44786.herokuapp.com/payment/${id}`
     const { isLoading, data: singlePayment } = useQuery(['singlePayment', id], () =>
         fetch(url, {
             method: 'GET',
@@ -30,7 +30,7 @@ const Payment = () => {
     )
     const price = singlePayment?.price;
     // console.log(price)
-    if(isLoading){
+    if (isLoading) {
         return <Loading></Loading>
     }
     return (
@@ -49,7 +49,7 @@ const Payment = () => {
                 <Elements stripe={stripePromise}>
                     <CheckoutForm singlePayment={singlePayment} />
                 </Elements>
-                
+
             </div>
         </div>
     );

@@ -10,7 +10,7 @@ const AddProfile = () => {
     const [user] = useAuthState(auth)
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = profile => {
-        fetch('http://localhost:5000/profile', {
+        fetch('https://serene-hamlet-44786.herokuapp.com/profile', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const AddProfile = () => {
                 />
                 <input {...register("number")}
                     className="my-custom-style input bg-main mt-5 text-md text-teal-500 font-semibold capitalize placeholder:text-md placeholder:text-teal-500 placeholder:font-semibold placeholder:capitalize"
-                    placeholder='Enter Your Phone Number'  required 
+                    placeholder='Enter Your Phone Number' required
                 />
                 <div className='grid md:grid-cols-2 gap-6'>
                     <input {...register("collegeName")}

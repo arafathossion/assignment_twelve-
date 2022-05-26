@@ -7,7 +7,7 @@ import auth from '../../fierbase.init';
 const AllUsers = () => {
     const Swal = require('sweetalert2')
     const [user] = useAuthState(auth)
-    const url = `http://localhost:5000/user`
+    const url = `https://serene-hamlet-44786.herokuapp.com/user`
     const { isLoading, error, data: allUsers, refetch } = useQuery('allUsers', () =>
         fetch(url, {
             method: 'GET',
@@ -19,7 +19,7 @@ const AllUsers = () => {
     )
 
     const makeAdmin = email => {
-        const urls = `http://localhost:5000/user/admin/${email}`;
+        const urls = `https://serene-hamlet-44786.herokuapp.com/user/admin/${email}`;
         fetch(urls, {
             method: 'PUT',
             headers: {
@@ -27,7 +27,7 @@ const AllUsers = () => {
             }
         })
             .then(res => {
-                if(res.status === 403){
+                if (res.status === 403) {
                     Swal.fire(
                         'Error!',
                         "you can't make admin anyone",
