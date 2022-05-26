@@ -22,7 +22,7 @@ Halda Screwdriver Back-end [Source Code](https://github.com/programming-hero-web
 * [Halda Screwdriver Front-end Developer](https://github.com/arafathossion)
 
 
-### মনে কথা
+### মনের কথা
 আসসালামু আলাইকুম,
 
 ui কিছু সময়ের জন্য ঠিক মত করতে পারি না, ফলাফল পাওয়ার পর ঠিক করে নিবো ৷ এত কম সময় এমন কাজ করতে অনেক কষ্ট হয়েছে, তার জন্য ui বেশি ভালো হয় নাই ৷
