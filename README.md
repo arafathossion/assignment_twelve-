@@ -1,6 +1,23 @@
-# Getting Started with Create React App
+# Halda Screwdriver
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Halda Screwdriver [Live Link](https://halda-screwdriver.web.app/home).
+
+Halda Screwdriver Front-end [Source Code](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-arafathossion).
+
+Halda Screwdriver Back-end [Source Code](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-arafathossion).
+
+
+### `Halda Screwdriver Project Build With & different features and functionality` 
+
+* [Create React App](https://github.com/facebook/create-react-app)
+* [React Bootstrap](https://react-bootstrap.github.io/)
+* [Googel FireBase](https://firebase.google.com/)
+* [react firebase hooks](https://github.com/CSFrequency/react-firebase-hooks)
+* [react router 6](https://reactrouter.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Halda Screwdriver Front-end Developer](https://github.com/arafathossion)
+
+
 
 ## Available Scripts
 
