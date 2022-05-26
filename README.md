@@ -22,10 +22,13 @@ Halda Screwdriver Back-end [Source Code](https://github.com/programming-hero-web
 * [Halda Screwdriver Front-end Developer](https://github.com/arafathossion)
 
 
-###
+### মনে কথা
 আসসালামু আলাইকুম,
+
 ui কিছু সময়ের জন্য ঠিক মত করতে পারি না, ফলাফল পাওয়ার পর ঠিক করে নিবো ৷ এত কম সময় এমন কাজ করতে অনেক কষ্ট হয়েছে, তার জন্য ui বেশি ভালো হয় নাই ৷
+
 api তৈরী করতে করতে অবস্থা খারাপ হয়ে গেছে ৷
+
 firebase Hosting করার পর থেকে react-countup কাজ করতেছে না, কিন্তু local and heroku তে ঠিক মত কাজ করতেছে ৷
 
 
