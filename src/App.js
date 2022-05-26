@@ -22,6 +22,9 @@ import RequireAdmin from './Pages/Authentication/RequireAdmin';
 import RequireNotAdmin from './Pages/Authentication/RequireNotAdmin';
 import AddProduct from './Pages/DashBoard/AddProduct';
 import Payment from './Pages/DashBoard/Payment';
+import SingleBlog from './Pages/Home/SingleBlog'
+import UpdateProfile from './Pages/DashBoard/UpdateProfile';
+import AddProfile from './Pages/DashBoard/AddProfile';
 
 
 
@@ -48,15 +51,20 @@ function App() {
             </RequireAuth>
           }></Route>
           <Route path='/singleTool/:_id' element={
-           <RequireAuth>
+            <RequireAuth>
               <Manufacturer_Tool></Manufacturer_Tool>
-           </RequireAuth>
+            </RequireAuth>
           }></Route>
           <Route path='/contact' element={<Contact></Contact>}></Route>
           <Route path='/signIn' element={<SignIn></SignIn>}></Route>
           <Route path='/signUp' element={<SignUp></SignUp>}></Route>
 
+          <Route path='/blog/:id' element={<SingleBlog></SingleBlog>}></Route>
 
+
+          <Route path='/addprofile/:email' element={<AddProfile />}></Route>
+
+          <Route path='/updateprifile/:email' element={<UpdateProfile />}></Route>
 
           <Route path='/dashboard' element={
             <RequireAuth>

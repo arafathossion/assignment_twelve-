@@ -17,22 +17,30 @@ const Manufacturer_Tools = () => {
     const { isLoading, error, data: tools, refetch } = useQuery('repoData', () =>
         fetch('http://localhost:5000/tools').then(res =>
             res.json()
-            )
-            )
-            
+        )
+    )
+
     // console.log(tools)
 
     const handleClick = (_id) => {
         navigate(`/singleTool/${_id}`);
-        console.log(_id)
+        // console.log(_id)
     }
     // if(user) {
     //     refetch()
     // }
     const reLoadToolsPain = tools?.slice(-6);
-// console.log(tools, "6" ,reLoadToolsPain)
+    // console.log(tools, "6" ,reLoadToolsPain)
     return (
         <div className=' py-24'>
+
+            <div className='text-center pb-20'>
+                <h1 className='text-3xl font-extrabold capitalize'>Millons business trust us</h1>
+                <h4 className='text-3xl font-medium uppercase py-4 text-teal-500'>our some products</h4>
+            </div>
+
+
+
             <div className="grid md:grid-cols-3 gap-8 px-16">
                 {
                     reLoadToolsPain?.map(tool => <div className="card bg-main my-custom-style rounded-xl" key={tool._id}>
