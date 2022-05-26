@@ -22,6 +22,13 @@ const Reviews = () => {
             res.json()
         )
     )
+    const pad = reviews?.rating;
+    let text = "";
+
+    for (let i = 0; i < pad; i++) {
+        text += "The number " + i + "<br>";
+    }
+    console.log(text)
     // console.log(user?.photoURL)
     return (
         <>

@@ -2,10 +2,11 @@ import { signOut } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../fierbase.init';
 
 const MyOrder = () => {
+    const Swal = require('sweetalert2')
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const url = `http://localhost:5000/myorder?email=${user?.email}`
@@ -19,7 +20,7 @@ const MyOrder = () => {
             if (res.status === 401 || res.status === 403) {
                 signOut(auth);
                 localStorage.removeItem('accessToken');
-                       navigate('/home')
+                navigate('/home')
             }
             return res.json()
         })
@@ -32,18 +33,35 @@ const MyOrder = () => {
     //     }
     // }
     const handleMyOrderDelete = _id => {
-        const urls = `http://localhost:5000/order/${_id}`
-        fetch(urls, {
-            method: 'DELETE', // or 'PUT'          
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const urls = `http://localhost:5000/order/${_id}`
+                fetch(urls, {
+                    method: 'DELETE', // or 'PUT'          
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                refetch()
+            }
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        refetch()
     }
 
 
@@ -66,18 +84,24 @@ const MyOrder = () => {
                     </div>
                     <div className='text-teal-500 font-semibold col-span-2'>
                         <h4>Quantity : {myorder?.quantity}</h4>
-                        {/* </div>
-                <div className='text-teal-500 font-semibold col-span-1'> */}
                         <h4>Price : {myorder?.price}</h4>
                     </div>
-                    <div className='text-teal-500 font-semibold flex col-span-2 border border-red-500 justify-between'>
-                        <button className='btn bg-main'>Pay</button>
-                        {/* </div>
-                <div className='text-teal-500 font-semibold'>  */}
-                        <button className='btn bg-main' onClick={() => handleMyOrderDelete(myorder?._id)}>Delete</button>
+                    <div className='text-teal-500 font-semibold flex col-span-2 justify-between'>
+                        {
+                            myorder?.paid ? <span className='btn bg-main text-teal-500 my-custom-style border-0'>Paid</span> :
+                                <Link to={`/dashboard/payment/${myorder?._id}`}>
+                                    <button className='btn bg-main text-red-500 my-custom-style border-0'
+                                    >Pay</button>
+                                </Link>
+                        }
+                        
+                       {
+                           myorder?.paid ? '':  <button className='btn bg-main text-red-500 my-custom-style border-0' 
+                           onClick={() => handleMyOrderDelete(myorder?._id)}>Delete</button>
+                       }
                     </div>
-                    <div className='text-teal-500 font-semibold col-span-2'>
-                        <h4>Transaction Id :</h4>
+                    <div className='text-teal-500 font-semibold col-span-4'>
+                        <h4>Transaction Id : {myorder?.transactionId}</h4>
                     </div>
 
                 </div>)

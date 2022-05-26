@@ -21,15 +21,16 @@ import auth from './fierbase.init';
 import RequireAdmin from './Pages/Authentication/RequireAdmin';
 import RequireNotAdmin from './Pages/Authentication/RequireNotAdmin';
 import AddProduct from './Pages/DashBoard/AddProduct';
+import Payment from './Pages/DashBoard/Payment';
 
 
 
 function App() {
   const [user] = useAuthState(auth)
   const { refetch } = useQuery();
-  // if (user) {
-  //   refetch()
-  // }
+  if (user) {
+    refetch()
+  }
   return (
     <div>
 
@@ -47,7 +48,9 @@ function App() {
             </RequireAuth>
           }></Route>
           <Route path='/singleTool/:_id' element={
-            <Manufacturer_Tool></Manufacturer_Tool>
+           <RequireAuth>
+              <Manufacturer_Tool></Manufacturer_Tool>
+           </RequireAuth>
           }></Route>
           <Route path='/contact' element={<Contact></Contact>}></Route>
           <Route path='/signIn' element={<SignIn></SignIn>}></Route>
@@ -87,6 +90,11 @@ function App() {
               <RequireAdmin>
                 <AddProduct></AddProduct>
               </RequireAdmin>
+            }></Route>
+            <Route path='/dashboard/payment/:id' element={
+              <RequireNotAdmin>
+                <Payment></Payment>
+              </RequireNotAdmin>
             }></Route>
             <Route index element={<MyProfile></MyProfile>}></Route>
 

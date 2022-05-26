@@ -30,9 +30,10 @@ const Manufacturer_Tool = () => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         const quantity = e.target.quantity.value;
-        const price = de;
+        const price = de.toString();
         const mQuantity = parseInt(tool?.minOrderQuantity);
         const img = tool?.picture;
+        const itemName = tool?.itemName;
         const maxQuantity = parseInt(tool?.quantity);
         if (quantity < mQuantity || quantity > maxQuantity) {
             Swal.fire({
@@ -51,7 +52,7 @@ const Manufacturer_Tool = () => {
             )
             e.target.reset();
         }
-        const order = { name, email, quantity, price, img }
+        const order = { name, email, quantity, price, img, itemName }
 
 
         fetch('http://localhost:5000/order', {
