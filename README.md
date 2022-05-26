@@ -14,9 +14,19 @@ Halda Screwdriver Back-end [Source Code](https://github.com/programming-hero-web
 * [Googel FireBase](https://firebase.google.com/)
 * [react firebase hooks](https://github.com/CSFrequency/react-firebase-hooks)
 * [react router 6](https://reactrouter.com/)
+* [react form hook](https://react-hook-form.com/)
+* [swiper js react](https://swiperjs.com/react)
+* [SweetAlert2](https://sweetalert2.github.io/)
+* [react-countup](https://www.npmjs.com/package/react-countup)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Halda Screwdriver Front-end Developer](https://github.com/arafathossion)
 
+
+###
+আসসালামু আলাইকুম,
+ui কিছু সময়ের জন্য ঠিক মত করতে পারি না, ফলাফল পাওয়ার পর ঠিক করে নিবো ৷ এত কম সময় এমন কাজ করতে অনেক কষ্ট হয়েছে, তার জন্য ui বেশি ভালো হয় নাই ৷
+api তৈরী করতে করতে অবস্থা খারাপ হয়ে গেছে ৷
+firebase Hosting করার পর থেকে react-countup কাজ করতেছে না, কিন্তু local and heroku তে ঠিক মত কাজ করতেছে ৷
 
 
 ## Available Scripts
